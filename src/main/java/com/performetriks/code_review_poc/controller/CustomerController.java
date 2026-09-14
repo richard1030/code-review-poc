@@ -5,6 +5,7 @@ import com.performetriks.code_review_poc.service.CustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -21,5 +22,10 @@ public class CustomerController {
     @GetMapping
     public List<Customer> getCustomers() {
         return customerService.getCustomers();
+    }
+
+    @GetMapping("/search")
+    public List<Customer> searchCustomers(@RequestParam String name) {
+        return customerService.searchCustomers(name);
     }
 }
